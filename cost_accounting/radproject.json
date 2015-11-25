@@ -1,0 +1,13 @@
+{
+    "name": "cost_accounting",
+    "application": null,
+    "libs": {},
+    "view": {
+        "screen.home": "/source/views/screen.home"
+    },
+    "model": {},
+    "service": {},
+    "screen": {},
+    "external": {},
+    "links": {}
+}

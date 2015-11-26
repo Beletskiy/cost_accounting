@@ -4,6 +4,12 @@
     
     var scripts = [
         
+        "source/models/collection.categories/collection.categories.js",
+        
+        "source/service/service.json_loader/service.json_loader.js",
+        
+        "source/views/screen.addCosts/screen.addCosts.js",
+        
         "source/views/screen.home/screen.home.js",
         
         "source/application/application.js"

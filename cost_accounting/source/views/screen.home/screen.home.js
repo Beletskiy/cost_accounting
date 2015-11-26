@@ -33,5 +33,12 @@ RAD.view("screen.home", RAD.Blanks.View.extend({
         
     }
 */
+    events: {
+        'tap .btn' : 'onButtonClick'
+    },
+    onButtonClick: function (e) {
+        var id = e.currentTarget.getAttribute('id');
+        this.application.showNextPage(id);
+    }
 
 }));

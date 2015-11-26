@@ -3,11 +3,17 @@
     "application": null,
     "libs": {},
     "view": {
-        "screen.home": "/source/views/screen.home"
+        "screen.home": "/source/views/screen.home",
+        "screen.addCosts": "/source/views/screen.addCosts"
     },
     "model": {},
-    "service": {},
+    "service": {
+        "service.json_loader": "/source/service/service.json_loader"
+    },
     "screen": {},
     "external": {},
-    "links": {}
+    "links": {},
+    "collection": {
+        "collection.category": "/source/models/collection.category"
+    }
 }

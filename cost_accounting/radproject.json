@@ -6,7 +6,9 @@
         "screen.home": "/source/views/screen.home",
         "screen.addCosts": "/source/views/screen.addCosts"
     },
-    "model": {},
+    "model": {
+        "model.purchase": "/source/models/model.purchase"
+    },
     "service": {
         "service.json_loader": "/source/service/service.json_loader"
     },
@@ -14,6 +16,10 @@
     "external": {},
     "links": {},
     "collection": {
-        "collection.category": "/source/models/collection.category"
+        "collection.category": "/source/models/collection.category",
+        "collection.costs": "/source/models/collection.costs"
+    },
+    "scrollable": {
+        "screen.history": "/source/views/screen.history"
     }
 }

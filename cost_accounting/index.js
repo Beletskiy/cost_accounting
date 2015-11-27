@@ -6,9 +6,15 @@
         
         "source/models/collection.categories/collection.categories.js",
         
+        "source/models/collection.purchases/collection.purchases.js",
+        
+        "source/models/model.purchase/model.purchase.js",
+        
         "source/service/service.json_loader/service.json_loader.js",
         
         "source/views/screen.addCosts/screen.addCosts.js",
+        
+        "source/views/screen.history/screen.history.js",
         
         "source/views/screen.home/screen.home.js",
         

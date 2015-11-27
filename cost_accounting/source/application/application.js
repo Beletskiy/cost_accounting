@@ -13,7 +13,7 @@ RAD.application(function (core) {
         var options = {
             container_id: '#screen',
             content: 'screen.home',
-            animation: 'none',
+            animation: 'slide',
             backstack: true
         };
         core.publish('navigation.show', options);
@@ -47,6 +47,15 @@ RAD.application(function (core) {
         var options = {
             container_id: '#screen',
             content: 'screen.addCosts',
+            animation: 'slide',
+            backstack: true
+        };
+        core.publish('navigation.show', options);
+    };
+    app.showHistory = function () {
+        var options = {
+            container_id: '#screen',
+            content: 'screen.history',
             animation: 'slide',
             backstack: true
         };

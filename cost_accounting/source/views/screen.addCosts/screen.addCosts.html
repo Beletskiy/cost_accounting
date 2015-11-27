@@ -1,0 +1,21 @@
+<div>
+    <h1>Add Costs</h1>
+
+<form>
+        <div class="form-group">
+            <input type="date" class="form-control" id="date-choose" required>
+        </div>
+        <div class="form-group">
+            <select class="form-control" id = "costs-type" required>
+                <option selected disabled>Costs type</option>
+                {{# _.each(model, function(item, index) { }}
+                <option>{{ item.name }}</option>
+                {{# }); }}
+            </select>
+        </div>
+        <div class="form-group">
+            <input type="number" class="form-control" id = "Sum" placeholder="Sum" name="" required>
+        </div>
+        <button class="btn btn-default btn-block" id = "add-cost">Add cost</button>
+</form>
+</div>

@@ -1,1 +1,12 @@
-<div>screen.history</div>
+<div>
+    <h1>History</h1>
+    {{# _.each(model, function(item, index) { }}
+    <ul>
+        <li> {{ item.date }}</li>
+        {{# for (var i = 0; i < item.arr.length; i++) { }}
+        <li> {{ item.arr[i].category }} {{ item.arr[i].sum }}</li>
+        {{# } }}
+    </ul>
+    <hr>
+    {{# }); }}
+</div>

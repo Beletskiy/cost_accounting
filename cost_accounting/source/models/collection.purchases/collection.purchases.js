@@ -6,5 +6,9 @@ RAD.model('collection.purchases', Backbone.Collection.extend({
         this.on('add remove', function () {
             localStorage.setItem('purchases', JSON.stringify(this));
         });
+    },
+    comparator: function( collection ){
+        'use strict';
+        return( collection.get( 'date' ) );
     }
 }), true);

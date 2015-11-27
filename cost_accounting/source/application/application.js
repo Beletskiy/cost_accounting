@@ -57,7 +57,10 @@ RAD.application(function (core) {
             container_id: '#screen',
             content: 'screen.history',
             animation: 'slide',
-            backstack: true
+            backstack: true,
+            extras: {
+                hello : 'world'
+            }
         };
         core.publish('navigation.show', options);
     };

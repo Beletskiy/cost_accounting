@@ -3,8 +3,11 @@
     {{# _.each(model, function(item, index) { }}
     <ul>
         <li> {{ item.date }}</li>
-        {{# for (var i = 0; i < item.arr.length; i++) { }}
-        <li> {{ item.arr[i].category }} {{ item.arr[i].sum }}</li>
+        {{# for (var i = 0; i < item.elements.length; i++) { }}
+        <li id="{{ item.elements[i].id }}">
+            <span> {{ item.elements[i].category }} </span>
+            <span> {{ item.elements[i].sum }} UAH</span>
+        </li>
         {{# } }}
     </ul>
     <hr>

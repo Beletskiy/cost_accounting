@@ -1,16 +1,25 @@
-RAD.view("screen.history", RAD.Blanks.ScrollableView.extend({
+RAD.view('history.screen', RAD.Blanks.ScrollableView.extend({
 
-    url: 'source/views/screen.history/screen.history.html',
+    url: 'source/views/history.screen/history.screen.html',
+
+    events: {
+        'tap .glyphicon-remove-circle': 'deletePurchase'
+    },
+
 
     onInitialize: function () {
         'use strict';
         this.model = new Backbone.Collection();
+        this.listenTo(RAD.model('collection.purchases'), 'remove', this.application.showHistory);
+
     },
     onNewExtras: function () {
+        'use strict';
+
         var purchasesOldList = RAD.model('collection.purchases'),
             result = [],
             reference = null;
-        console.log(purchasesOldList);
+        //console.log(purchasesOldList);
         for (var i = 0; i < purchasesOldList.length; i++) {
             var el = {
                 category: purchasesOldList.models[i].attributes.category,
@@ -29,8 +38,12 @@ RAD.view("screen.history", RAD.Blanks.ScrollableView.extend({
                 result[result.length - 1].elements.push(el);
             }
         }
-
         this.model.reset(result);
+    },
+    deletePurchase: function (e) {
+        'use strict';
+        var purchaseForRemove = e.currentTarget.id;
+        RAD.model('collection.purchases').remove(RAD.model('collection.purchases').models[purchaseForRemove]);
 
     }
 }));

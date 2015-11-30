@@ -1,6 +1,6 @@
-RAD.view("screen.home", RAD.Blanks.View.extend({
+RAD.view('home.screen', RAD.Blanks.View.extend({
 
-    url: 'source/views/screen.home/screen.home.html',
+    url: 'source/views/home.screen/home.screen.html',
 /*
     onInitialize: function () {
         

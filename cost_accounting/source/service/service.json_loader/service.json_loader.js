@@ -25,9 +25,7 @@ RAD.service("service.json_loader", RAD.Blanks.Service.extend({
                 if (data.loader) {
                     // show loader popup if we need it
                     this.publish('navigation.dialog.show', {content: 'screen.loader'});
-                    console.log("recive message");
                 }
-                console.log("recive message, no data");
                 this._getJson(data.file, data.callback);
                 break;
         }

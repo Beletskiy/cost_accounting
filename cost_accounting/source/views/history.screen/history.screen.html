@@ -5,12 +5,13 @@
         <li> {{ item.date }}</li>
         {{# for (var i = 0; i < item.elements.length; i++) { }}
 
-        <li id="{{ item.elements[i].id }}">
+        <li>
             <table>
                 <tr>
                     <td> {{ item.elements[i].category }}</td>
                     <td> {{ item.elements[i].sum }} UAH</td>
-                    <td><span class="glyphicon glyphicon-remove-circle pull-right" aria-hidden="true"></span></td>
+                    <td><span class="glyphicon glyphicon-remove-circle pull-right" id="{{ item.elements[i].id }}"
+                              aria-hidden="true"></span></td>
                 </tr>
             </table>
         </li>

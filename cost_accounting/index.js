@@ -1,24 +1,24 @@
 (function (document, window) {
     // don't remove ## marks, CLI uses them for updating this file
     // #script_begin#
-    
+    'use strict';
     var scripts = [
-        
-        "source/models/collection.categories/collection.categories.js",
-        
-        "source/models/collection.purchases/collection.purchases.js",
-        
-        "source/models/model.purchase/model.purchase.js",
-        
-        "source/service/service.json_loader/service.json_loader.js",
-        
-        "source/views/screen.addCosts/screen.addCosts.js",
-        
-        "source/views/screen.history/screen.history.js",
-        
-        "source/views/screen.home/screen.home.js",
-        
-        "source/application/application.js"
+
+        'source/models/collection.categories/categories.collection.js',
+
+        'source/models/collection.purchases/purchases.collection.js',
+
+        'source/models/model.purchase/purchase.model.js',
+
+        'source/service/service.json_loader/service.json_loader.js',
+
+        'source/views/addCosts.screen/addCosts.screen.js',
+
+        'source/views/history.screen/history.screen.js',
+
+        'source/views/home.screen/home.screen.js',
+
+        'source/application/application.js'
     ];
     // #script_end#
     function onEndLoad() {

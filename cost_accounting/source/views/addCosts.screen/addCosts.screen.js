@@ -1,6 +1,6 @@
-RAD.view("screen.addCosts", RAD.Blanks.View.extend({
+RAD.view('addCosts.screen', RAD.Blanks.View.extend({
 
-    url: 'source/views/screen.addCosts/screen.addCosts.html',
+    url: 'source/views/addCosts.screen/addCosts.screen.html',
 
     events: {
         'tap button': 'onSubmit'

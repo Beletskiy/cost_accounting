@@ -12,7 +12,7 @@ RAD.application(function (core) {
     app.loadHome = function () {
         var options = {
             container_id: '#screen',
-            content: 'screen.home',
+            content: 'home.screen',
             animation: 'slide',
             backstack: true
         };
@@ -46,7 +46,7 @@ RAD.application(function (core) {
     app.showAddCosts = function () {
         var options = {
             container_id: '#screen',
-            content: 'screen.addCosts',
+            content: 'addCosts.screen',
             animation: 'slide',
             backstack: true
         };
@@ -55,12 +55,21 @@ RAD.application(function (core) {
     app.showHistory = function () {
         var options = {
             container_id: '#screen',
-            content: 'screen.history',
+            content: 'history.screen',
             animation: 'slide',
             backstack: true,
             extras: {
                 hello : 'world'
             }
+        };
+        core.publish('navigation.show', options);
+    };
+    app.showReports = function () {
+        var options = {
+            container_id: '#screen',
+            content: 'reports.screen',
+            animation: 'slide',
+            backstack: true
         };
         core.publish('navigation.show', options);
     };

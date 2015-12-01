@@ -1,9 +1,10 @@
-RAD.view('addCosts.screen', RAD.Blanks.View.extend({
+RAD.view('addCosts.screen', RAD.Blanks.ScrollableView.extend({
 
     url: 'source/views/addCosts.screen/addCosts.screen.html',
 
     events: {
-        'tap button': 'onSubmit'
+        'tap button': 'onSubmit',
+        'tap .glyphicon-menu-left': 'backToThePreviousPage'
     },
 
     onSubmit: function (e) {
@@ -24,34 +25,11 @@ RAD.view('addCosts.screen', RAD.Blanks.View.extend({
     onInitialize: function () {
         'use strict';
         this.model = RAD.model('collection.categories');
+    },
+
+    backToThePreviousPage: function () {
+        'use strict';
+        window.history.back();
     }
-    /*    onNewExtras: function (extras) {
-
-     },
-     onReceiveMsg: function (channel, data) {
-
-     },
-     onStartRender: function () {
-
-     },
-     onEndRender: function () {
-
-     },
-     onBeforeAttach: function(){
-
-     },
-     onStartAttach: function () {
-
-     },
-     onEndAttach: function () {
-
-     },
-     onEndDetach: function () {
-
-     },
-     onDestroy: function () {
-
-     }
-     */
 
 }));

@@ -1,4 +1,4 @@
-RAD.view('home.screen', RAD.Blanks.View.extend({
+RAD.view('home.screen', RAD.Blanks.ScrollableView.extend({
 
     url: 'source/views/home.screen/home.screen.html',
 /*

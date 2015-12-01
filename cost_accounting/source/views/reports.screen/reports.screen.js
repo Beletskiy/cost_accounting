@@ -2,6 +2,11 @@ RAD.view('reports.screen', RAD.Blanks.ScrollableView.extend({
 
     url: 'source/views/reports.screen/reports.screen.html',
 
+    events: {
+        'tap .btn' : 'onButtonClick',
+        'tap .glyphicon-menu-left': 'backToThePreviousPage'
+    },
+
     onInitialize: function () {
         'use strict';
         this.model = RAD.model('collection.purchases');
@@ -10,6 +15,11 @@ RAD.view('reports.screen', RAD.Blanks.ScrollableView.extend({
     onEndAttach: function () {
         'use strict';
         this.drawCharts();
+    },
+
+    backToThePreviousPage: function () {
+        'use strict';
+        window.history.back();
     },
 
     drawCharts: function () {
@@ -65,7 +75,7 @@ RAD.view('reports.screen', RAD.Blanks.ScrollableView.extend({
                     alignment: 'start'
                 },
                 //explorer: {},
-                width: 1000,
+                width: 800,
                 height: 500,
                 hAxis: {
                     format: 'd.M.yy',

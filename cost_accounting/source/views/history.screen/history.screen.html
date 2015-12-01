@@ -1,5 +1,5 @@
 <div>
-    <h1>History</h1>
+    <h1><span class="glyphicon glyphicon-menu-left"></span>History</h1>
     {{# _.each(model, function(item, index) { }}
     <ul>
         <li> {{ item.date }}</li>
@@ -10,8 +10,8 @@
                 <tr>
                     <td> {{ item.elements[i].category }}</td>
                     <td> {{ item.elements[i].sum }} UAH</td>
-                    <td><span class="glyphicon glyphicon-remove-circle pull-right" id="{{ item.elements[i].id }}"
-                              aria-hidden="true"></span></td>
+                    <td><span class="glyphicon glyphicon-remove-circle pull-right"
+                              id="{{ item.elements[i].id }}"></span></td>
                 </tr>
             </table>
         </li>

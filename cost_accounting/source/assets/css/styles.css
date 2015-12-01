@@ -28,9 +28,17 @@ li:first-child {
 li:nth-child(n + 2) {
     font-size: 16px;
 }
-
-.glyphicon {
+.glyphicon-arrow-left {
+    margin-bottom: 50px;
+    /*margin-top: 30px; */
+    margin-left: -80px;
+    position: absolute;
+}
+.glyphicon-remove-circle{
     margin-right: 30px;
+}
+table {
+    width: 90%;
 }
 td:first-child {
     width: 55%;
@@ -41,5 +49,8 @@ td:nth-child(2) {
 }
 td:nth-child(3) {
     width: 10%;
+}
+#linechart_material {
+    overflow-x: auto;
 }
 

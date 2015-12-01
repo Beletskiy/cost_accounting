@@ -3,7 +3,8 @@ RAD.view('history.screen', RAD.Blanks.ScrollableView.extend({
     url: 'source/views/history.screen/history.screen.html',
 
     events: {
-        'tap .glyphicon-remove-circle': 'deletePurchase'
+        'tap .glyphicon-remove-circle': 'deletePurchase',
+        'tap .glyphicon-menu-left': 'backToThePreviousPage'
     },
 
 
@@ -13,6 +14,7 @@ RAD.view('history.screen', RAD.Blanks.ScrollableView.extend({
         this.listenTo(RAD.model('collection.purchases'), 'remove', this.application.showHistory);
 
     },
+
     onNewExtras: function () {
         'use strict';
 
@@ -45,30 +47,10 @@ RAD.view('history.screen', RAD.Blanks.ScrollableView.extend({
         var purchaseForRemove = e.currentTarget.id;
         RAD.model('collection.purchases').remove(RAD.model('collection.purchases').models[purchaseForRemove]);
 
+    },
+
+    backToThePreviousPage: function () {
+        'use strict';
+        window.history.back();
     }
 }));
-/*   onStartRender: function () {
-
- }
- onReceiveMsg: function (channel, data) {
-
- },
- onEndRender: function () {
-
- },
- onBeforeAttach: function(){
-
- },
- onStartAttach: function () {
-
- },
- onEndAttach: function () {
-
- },
- onEndDetach: function () {
-
- },
- onDestroy: function () {
-
- }
- */

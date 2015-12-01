@@ -18,6 +18,8 @@
 
         'source/views/home.screen/home.screen.js',
 
+        'source/views/reports.screen/reports.screen.js',
+
         'source/application/application.js'
     ];
     // #script_end#

@@ -1,4 +1,4 @@
-RAD.view("reports.screen", RAD.Blanks.ScrollableView.extend({
+RAD.view('reports.screen', RAD.Blanks.ScrollableView.extend({
 
     url: 'source/views/reports.screen/reports.screen.html',
 
@@ -11,91 +11,96 @@ RAD.view("reports.screen", RAD.Blanks.ScrollableView.extend({
         'use strict';
         this.drawCharts();
     },
-    /*    onEndRender: function () {
 
-    },
-    onNewExtras: function (extras) {
-        
-    },
-    onReceiveMsg: function (channel, data) {
-        
-    },
-    onStartRender: function () {
-        
-    },
-
-    onBeforeAttach: function(){
-
-    },
-    onStartAttach: function () {
-        
-    },
-
-    onEndDetach: function () {
-
-        
-    },
-    onDestroy: function () {
-        
-    }
-*/
-
-    drawCharts: function() {
-        var self = this;
+    drawCharts: function () {
+        'use strict';
+        var self = this,
+            habitation = 0, transport = 0, entertainment = 0, products = 0, food = 0, comServ = 0;
         google.load('visualization', '1.1',
-            { packages: ['line'], callback: drawChart });
+            {packages: ['Line'], callback: drawChart});
 
         function drawChart() {
-            var data = new google.visualization.DataTable();
+            var data = new google.visualization.DataTable(),
+                year, month, day, currentDate, row, common = 0, lastDate = null,
+                currentDateArr = [];
 
-            data.addColumn('number', 'Day');
-            data.addColumn('number', 'Sum');
-         /*   data.addColumn('number', 'Habitation');
+            data.addColumn('date', 'Day');
+            data.addColumn('number', 'Habitation');
             data.addColumn('number', 'Transport');
             data.addColumn('number', 'Entertainment');
             data.addColumn('number', 'Products');
             data.addColumn('number', 'Food');
             data.addColumn('number', 'Communication services');
-            data.addColumn('number', 'Common'); */
+            data.addColumn('number', 'Common');
 
             for (var i = 0; i < self.model.length; i++) {
-                var row = [Number(self.model.models[i].attributes.date), Number(self.model.models[i].attributes.sum)];
-                console.log(self.model.models[i].attributes.date);
+                habitation = 0;
+                transport = 0;
+                entertainment = 0;
+                products = 0;
+                food = 0;
+                comServ = 0;
+                currentDate = self.model.models[i].attributes.date;
+                currentDateArr = currentDate.split('-');
+                year = Number(currentDateArr[0]);
+                month = Number(currentDateArr[1]);
+                day = Number(currentDateArr[2]);
+                calculateSumForCategories(self.model.models[i].attributes.category, i);
+                if (lastDate !== currentDate) {
+                    lastDate = currentDate;
+                    common = habitation + transport + entertainment + products + food + comServ;
+                } else {
+                    common += habitation + transport + entertainment + products + food + comServ;
+                }
+                row = [[new Date(year, month - 1, day),
+                    habitation, transport, entertainment, products, food, comServ, common]];
+
                 data.addRows(row);
             }
 
-            data.addRows(row);
-
-           /* data.addRows([
-                [1,  37.8, 80.8, 41.8],
-                [2,  30.9, 69.5, 32.4],
-                [3,  25.4,   57, 25.7],
-                [4,  11.7, 18.8, 10.5],
-                [5,  11.9, 17.6, 10.4],
-                [6,   8.8, 13.6,  7.7],
-                [7,   7.6, 12.3,  9.6],
-                [8,  12.3, 29.2, 10.6],
-                [9,  16.9, 42.9, 14.8],
-                [10, 12.8, 30.9, 11.6],
-                [11,  5.3,  7.9,  4.7],
-                [12,  6.6,  8.4,  5.2],
-                [13,  4.8,  6.3,  3.6],
-                [14,  4.2,  6.2,  3.4]
-            ]); */
-
-            console.log(self.model);
-
             var options = {
-                chart: {
-                    title: 'Reports'
+                curveType: 'function',
+                legend: {
+                    position: 'bottom',
+                    alignment: 'start'
                 },
-                width: 400,
-                height: 500
+                //explorer: {},
+                width: 1000,
+                height: 500,
+                hAxis: {
+                    format: 'd.M.yy',
+                    gridlines: {count: 5}
+                }
             };
-            //console.log( this.$("#linechart_material") );
             var chart = new google.charts.Line(document.getElementById('linechart_material'));
+            chart.draw(data, options);
+        }
 
-            chart.draw(data, google.charts.Line.convertOptions(options));
+        function calculateSumForCategories(category, index) {
+            var sum = Number(self.model.models[index].attributes.sum);
+            switch (category) {
+                case 'Habitation':
+                    habitation = sum;
+                    break;
+                case 'Transport':
+                    transport = sum;
+                    break;
+                case 'Entertainment':
+                    entertainment = sum;
+                    break;
+                case 'Products':
+                    products = sum;
+                    break;
+                case 'Food':
+                    food = sum;
+                    break;
+                case 'Communication services':
+                    comServ = sum;
+                    break;
+                default:
+                    console.log('Sorry ');
+            }
+
         }
     }
 

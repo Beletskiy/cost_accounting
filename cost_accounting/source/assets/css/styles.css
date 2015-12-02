@@ -53,6 +53,9 @@ form {
     background: #ED9170;
     color: black;
 }
+::-webkit-validation-bubble-message{
+    background: red;
+}
 
 .form-group {
     margin-bottom: 50px;
@@ -100,4 +103,6 @@ td:nth-child(3) {
 #linechart_material {
     overflow-x: auto;
 }
-
+.Transport {
+    background: #DB4437;
+}

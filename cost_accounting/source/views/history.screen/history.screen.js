@@ -21,7 +21,6 @@ RAD.view('history.screen', RAD.Blanks.ScrollableView.extend({
         var purchasesOldList = RAD.model('collection.purchases'),
             result = [],
             reference = null;
-        //console.log(purchasesOldList);
         for (var i = 0; i < purchasesOldList.length; i++) {
             var el = {
                 category: purchasesOldList.models[i].attributes.category,

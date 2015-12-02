@@ -4,15 +4,15 @@
     'use strict';
     var scripts = [
 
-        'source/models/collection.categories/categories.collection.js',
+        'source/models/categories.collection/categories.collection.js',
 
-        'source/models/collection.purchases/purchases.collection.js',
+        'source/models/purchases.collection/purchases.collection.js',
 
-        'source/models/model.purchase/purchase.model.js',
+        'source/models/purchase.model/purchase.model.js',
 
         'source/service/service.json_loader/service.json_loader.js',
 
-        'source/views/addCosts.screen/addCosts.screen.js',
+        'source/views/add_costs.screen/add_costs.screen.js',
 
         'source/views/history.screen/history.screen.js',
 
@@ -28,8 +28,8 @@
         var core = window.RAD.core,
             application = window.RAD.application,
             coreOptions = {
-                defaultBackstack: false,
-                defaultAnimation: 'none',
+                defaultBackstack: true,
+                defaultAnimation: 'slide',
                 animationTimeout: 3000,
                 debug: false
             };

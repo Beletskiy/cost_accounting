@@ -76,6 +76,12 @@ form {
 #date-choose, #Sum, #costs-type {
     height: 50px;
 }
+#success-message {
+    display: none;
+    text-align: center;
+    margin-top: 20px;
+    font-size: 16px;
+}
 
 li:first-child {
     text-align: center;
@@ -84,6 +90,7 @@ li:first-child {
 
 li:nth-child(n + 2) {
     font-size: 16px;
+    color: white;
 }
 
 .glyphicon-menu-left {
@@ -114,7 +121,7 @@ td:nth-child(3) {
 }
 
 #linechart_material {
-    overflow-x: auto;
+    overflow: auto;
 }
 
 .Transport {

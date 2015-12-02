@@ -46,9 +46,7 @@ RAD.application(function (core) {
     app.showAddCosts = function () {
         var options = {
             container_id: '#screen',
-            content: 'addCosts.screen',
-            animation: 'slide',
-            backstack: true
+            content: 'add_costs.screen',
         };
         core.publish('navigation.show', options);
     };
@@ -56,8 +54,6 @@ RAD.application(function (core) {
         var options = {
             container_id: '#screen',
             content: 'history.screen',
-            animation: 'slide',
-            backstack: true,
             extras: {}
         };
         core.publish('navigation.show', options);
@@ -66,8 +62,6 @@ RAD.application(function (core) {
         var options = {
             container_id: '#screen',
             content: 'reports.screen',
-            animation: 'slide',
-            backstack: true
         };
         core.publish('navigation.show', options);
     };

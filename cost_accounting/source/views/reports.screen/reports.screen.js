@@ -76,7 +76,7 @@ RAD.view('reports.screen', RAD.Blanks.View.extend({
                 },
                 //explorer: {},
                 width: 800,
-                height: 500,
+                height: 420,// сюда из window передать размер єкрана
                 hAxis: {
                     format: 'd.M.yy',
                     gridlines: {count: 5}

@@ -16,7 +16,7 @@ RAD.view('addCosts.screen', RAD.Blanks.ScrollableView.extend({
             sum = field2.value,
             field3 = this.el.querySelector('#costs-type'),
             costsType = field3.value;
-        if ((time) && (sum) && (costsType)) {
+        if ((time) && (costsType) && (this.isRightSum(sum))) {
             RAD.model('model.purchase').set({date: time, category: costsType, sum: sum});
             RAD.model('collection.purchases').add(RAD.model('model.purchase'));
         }
@@ -30,6 +30,13 @@ RAD.view('addCosts.screen', RAD.Blanks.ScrollableView.extend({
     backToThePreviousPage: function () {
         'use strict';
         window.history.back();
+    },
+
+    isRightSum: function(sum) {
+        'use strict';
+        if (sum > 1) {
+            return parseInt(Number(sum), 10) === Number(sum);
+        }
     }
 
 }));

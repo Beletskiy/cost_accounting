@@ -85,10 +85,12 @@ li:nth-child(n + 2) {
     position: absolute;
 }
 .glyphicon-remove-circle{
-    margin-right: 30px;
+    margin-right: 20px;
+    margin-top: 5px;
+    color: black;
 }
 table {
-    width: 90%;
+    width: 100%;
 }
 td:first-child {
     width: 55%;
@@ -105,4 +107,19 @@ td:nth-child(3) {
 }
 .Transport {
     background: #DB4437;
+}
+.Habitation {
+    background: #4285F4;
+}
+.Entertainment {
+    background: #F4B400;
+}
+.Products {
+    background: #0F9D58;
+}
+.Food {
+    background: #AB47BC;
+}
+.Communication {
+    background: #00ACC1;
 }

@@ -19,7 +19,7 @@ RAD.view('reports.screen', RAD.Blanks.View.extend({
 
     backToThePreviousPage: function () {
         'use strict';
-        window.history.back();
+        this.application.backToThePreviousPage();
     },
 
     drawCharts: function () {
@@ -31,7 +31,7 @@ RAD.view('reports.screen', RAD.Blanks.View.extend({
 
         function drawChart() {
             var data = new google.visualization.DataTable(),
-                year, month, day, currentDate, row, common = 0, lastDate = null,
+                year = 0, month = 0, day = 0, currentDate = null, row = null, common = 0, lastDate = null,
                 currentDateArr = [];
 
             data.addColumn('date', 'Day');
@@ -58,7 +58,7 @@ RAD.view('reports.screen', RAD.Blanks.View.extend({
                 calculateSumForCategories(self.model.models[i].attributes.category, i);
                 if (lastDate !== currentDate) {
                     lastDate = currentDate;
-                    common = habitation + transport + entertainment + products + food + comServ;
+                    common = habitation + transport + entertainment + products + food + comServ; //объединить в объект?
                 } else {
                     common += habitation + transport + entertainment + products + food + comServ;
                 }
@@ -83,7 +83,7 @@ RAD.view('reports.screen', RAD.Blanks.View.extend({
                 }
             };
             var chart = new google.charts.Line(document.getElementById('linechart_material'));
-            chart.draw(data, options);
+            chart.draw(data, google.charts.Line.convertOptions(options));
         }
 
         function calculateSumForCategories(category, index) {
@@ -108,7 +108,7 @@ RAD.view('reports.screen', RAD.Blanks.View.extend({
                     comServ = sum;
                     break;
                 default:
-                    console.log('Sorry ');
+                    console.log('Do not have this category');
             }
 
         }

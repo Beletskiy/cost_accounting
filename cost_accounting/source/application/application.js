@@ -58,9 +58,7 @@ RAD.application(function (core) {
             content: 'history.screen',
             animation: 'slide',
             backstack: true,
-            extras: {
-                hello : 'world'
-            }
+            extras: {}
         };
         core.publish('navigation.show', options);
     };
@@ -72,6 +70,9 @@ RAD.application(function (core) {
             backstack: true
         };
         core.publish('navigation.show', options);
+    };
+    app.backToThePreviousPage = function() {
+        window.history.back();
     };
 
     return app;

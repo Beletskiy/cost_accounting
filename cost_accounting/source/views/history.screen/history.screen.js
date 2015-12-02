@@ -50,6 +50,6 @@ RAD.view('history.screen', RAD.Blanks.ScrollableView.extend({
 
     backToThePreviousPage: function () {
         'use strict';
-        window.history.back();
+        this.application.backToThePreviousPage();
     }
 }));

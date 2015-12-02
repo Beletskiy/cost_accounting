@@ -1,4 +1,4 @@
-RAD.service("service.json_loader", RAD.Blanks.Service.extend({
+RAD.service('service.json_loader', RAD.Blanks.Service.extend({
     _getJson: function (file, callback) {
         'use strict';
         var that = this;

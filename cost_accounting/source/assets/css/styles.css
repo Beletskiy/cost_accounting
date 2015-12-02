@@ -1,24 +1,24 @@
 body {
     background: #F1F2C9;
 }
+
 .wrapper {
     padding: 0 20px;
-   /* background: #fff; */
-    /*max-width: 600px; */
     width: 100%;
-    /*margin: 35px auto; */
 }
 
 .screen {
     height: 100%;
     width: 100%;
 }
+
 .btn-lg {
     line-height: 7;
     color: #fff;
     background-color: #ED9170;
     border-color: #fff;
 }
+
 .btn-default {
     color: #fff;
     background-color: #ED9170;
@@ -28,32 +28,38 @@ body {
     padding: 10px 70px;
     border-radius: 6px;
 }
+
 h1 {
     text-align: center;
     margin-bottom: 50px;
     margin-top: 30px;
     font-size: 26px;
 }
+
 form {
     width: 80%;
     margin: 0 auto;
 }
+
 .form-control {
     color: #fff;
     background-color: #ED9170;
 }
 
-#sum::-webkit-input-placeholder{
+#sum::-webkit-input-placeholder {
     color: #ddd;
 }
+
 ::-webkit-inner-spin-button {
     display: none;
 }
+
 ::-webkit-calendar-picker-indicator {
     background: #ED9170;
     color: black;
 }
-::-webkit-validation-bubble-message{
+
+::-webkit-validation-bubble-message {
     background: red;
 }
 
@@ -61,65 +67,76 @@ form {
     margin-bottom: 50px;
     text-align: center;
 }
+
 #add-cost {
     text-align: center;
     margin-top: 100px;
 }
+
 #date-choose, #Sum, #costs-type {
     height: 50px;
 }
+
 li:first-child {
     text-align: center;
     font-size: 16px;
 }
+
 li:nth-child(n + 2) {
     font-size: 16px;
 }
-.glyphicon{
+
+.glyphicon-menu-left {
     color: #ED9170;
 }
-.glyphicon-arrow-left {
-    margin-bottom: 50px;
-    /*margin-top: 30px; */
-    margin-left: -80px;
-    position: absolute;
-}
-.glyphicon-remove-circle{
+
+.glyphicon-remove-circle {
     margin-right: 20px;
     margin-top: 5px;
     color: black;
 }
+
 table {
     width: 100%;
 }
+
 td:first-child {
     width: 55%;
     padding-left: 20px;
 }
+
 td:nth-child(2) {
     width: 35%;
 }
+
 td:nth-child(3) {
     width: 10%;
 }
+
 #linechart_material {
     overflow-x: auto;
 }
+
 .Transport {
     background: #DB4437;
 }
+
 .Habitation {
     background: #4285F4;
 }
+
 .Entertainment {
     background: #F4B400;
 }
+
 .Products {
     background: #0F9D58;
 }
+
 .Food {
     background: #AB47BC;
 }
+
 .Communication {
     background: #00ACC1;
 }

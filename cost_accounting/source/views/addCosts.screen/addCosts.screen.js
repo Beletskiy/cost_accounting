@@ -12,7 +12,7 @@ RAD.view('addCosts.screen', RAD.Blanks.ScrollableView.extend({
         e.preventDefault();
         var field1 = this.el.querySelector('#date-choose'),
             time = field1.value,
-            field2 = this.el.querySelector('#Sum'),
+            field2 = this.el.querySelector('#sum'),
             sum = field2.value,
             field3 = this.el.querySelector('#costs-type'),
             costsType = field3.value;

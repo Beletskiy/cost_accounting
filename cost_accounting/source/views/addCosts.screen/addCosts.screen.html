@@ -1,21 +1,23 @@
 <div>
-    <h1><span class="glyphicon glyphicon-menu-left"></span>Add Costs</h1>
+    <div class="wrapper">
+        <h1><span class="glyphicon glyphicon-menu-left pull-left"></span>Add Costs</h1>
 
-<form>
-        <div class="form-group">
-            <input type="date" class="form-control" id="date-choose" required>
-        </div>
-        <div class="form-group">
-            <select class="form-control" id = "costs-type" required>
-                <option selected disabled>Costs type</option>
-                {{# _.each(model, function(item, index) { }}
-                <option>{{ item.name }}</option>
-                {{# }); }}
-            </select>
-        </div>
-        <div class="form-group">
-            <input type="number" class="form-control" id = "Sum" placeholder="Sum" name="" required>
-        </div>
-        <button class="btn btn-default btn-block" id = "add-cost">Add cost</button>
-</form>
+        <form>
+            <div class="form-group">
+                <input type="date" class="form-control" id="date-choose" min="2015-01-01" max="2025-01-01" required>
+            </div>
+            <div class="form-group">
+                <select class="form-control" id="costs-type" required>
+                    <option selected disabled value="">Costs type</option>
+                    {{# _.each(model, function(item, index) { }}
+                    <option>{{ item.name }}</option>
+                    {{# }); }}
+                </select>
+            </div>
+            <div class="form-group">
+                <input type="number" class="form-control" id="sum" placeholder="Sum" min="1" required>
+            </div>
+            <button class="btn btn-default" id="add-cost">Add cost</button>
+        </form>
+    </div>
 </div>

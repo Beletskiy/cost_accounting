@@ -4,12 +4,14 @@ RAD.view('add_costs.screen', RAD.Blanks.ScrollableView.extend({
 
     events: {
         'tap button': 'onSubmit',
-        'tap .glyphicon-menu-left': 'backToThePreviousPage'
+        'tap .glyphicon-menu-left': 'backToThePreviousPage',
+        'tap input, select': 'onForm'
     },
 
     onInitialize: function () {
         'use strict';
         this.model = RAD.model('collection.categories');
+        this.isFirstClickOnForm = true;
     },
 
     onSubmit: function (e) {
@@ -24,14 +26,24 @@ RAD.view('add_costs.screen', RAD.Blanks.ScrollableView.extend({
         if ((time) && (costsType) && (this.isRightSum(sum))) {
             RAD.model('model.purchase').set({date: time, category: costsType, sum: sum});
             RAD.model('collection.purchases').add(RAD.model('model.purchase'));
-           // this.el.querySelector('#success-message').show();
+           // console.log(RAD.model('collection.purchases'));
             $('#success-message').show();
+            this.isFirstClickOnForm = false;
         }
     },
 
     backToThePreviousPage: function () {
         'use strict';
        this.application.backToThePreviousPage();
+    },
+
+    onForm: function () {
+        'use strict';
+        if (!this.isFirstClickOnForm) {
+            document.getElementById('form-add-cost').reset();
+            $('#success-message').hide();
+            this.isFirstClickOnForm = true;
+        }
     },
 
     isRightSum: function(sum) {

@@ -121,7 +121,9 @@ td:nth-child(3) {
 }
 
 #linechart_material {
-    overflow: auto;
+    overflow-x: auto;
+    overflow-y: hidden;
+
 }
 
 .Transport {

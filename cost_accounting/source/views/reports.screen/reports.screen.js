@@ -3,7 +3,7 @@ RAD.view('reports.screen', RAD.Blanks.View.extend({
     url: 'source/views/reports.screen/reports.screen.html',
 
     events: {
-        'tap .btn' : 'onButtonClick',
+        'tap .btn': 'onButtonClick',
         'tap .glyphicon-menu-left': 'backToThePreviousPage'
     },
 
@@ -12,10 +12,24 @@ RAD.view('reports.screen', RAD.Blanks.View.extend({
         this.model = RAD.model('collection.purchases');
     },
 
+    onStartAttach: function () {
+        'use strict';
+        var self = this;
+        $(window).resize(function () {
+            self.drawCharts();
+        });
+    },
+
     onEndAttach: function () {
         'use strict';
         this.drawCharts();
     },
+
+    onEndDetach: function () {
+        'use strict';
+        $(window).off('resize');
+    },
+
 
     backToThePreviousPage: function () {
         'use strict';
@@ -25,7 +39,10 @@ RAD.view('reports.screen', RAD.Blanks.View.extend({
     drawCharts: function () {
         'use strict';
         var self = this,
-            habitation = 0, transport = 0, entertainment = 0, products = 0, food = 0, comServ = 0;
+            VERTICAL_INDENT = 40,
+            habitation = 0, transport = 0, entertainment = 0, products = 0, food = 0, comServ = 0,
+            currentInnerHeight = 0, currentInnerWeight = 0;
+        calculateCurrentInnerSizes();
         google.load('visualization', '1.1',
             {packages: ['Line'], callback: drawChart});
 
@@ -75,8 +92,8 @@ RAD.view('reports.screen', RAD.Blanks.View.extend({
                     alignment: 'start'
                 },
                 //explorer: {},
-                width: 800,
-                height: 420,// сюда из window передать размер єкрана
+                width: currentInnerWeight,
+                height: currentInnerHeight,
                 hAxis: {
                     format: 'd.M.yy',
                     gridlines: {count: 5}
@@ -111,6 +128,13 @@ RAD.view('reports.screen', RAD.Blanks.View.extend({
                     console.log('Do not have this category');
             }
 
+        }
+
+        function calculateCurrentInnerSizes() {
+            var computedStyleH1 = getComputedStyle(document.getElementById('reports-head'));
+            currentInnerHeight = window.innerHeight - parseInt(computedStyleH1.marginBottom) -
+                parseInt(computedStyleH1.marginTop) - VERTICAL_INDENT;
+            currentInnerWeight = window.innerWidth;
         }
     }
 

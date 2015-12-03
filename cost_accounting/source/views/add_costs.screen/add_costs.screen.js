@@ -8,11 +8,16 @@ RAD.view('add_costs.screen', RAD.Blanks.ScrollableView.extend({
         'tap input, select': 'onForm'
     },
 
-    onInitialize: function () {
+    model: RAD.model('collection.categories'),
+    isFirstClickOnForm: true,
+
+    $successMessage: null,
+
+    onEndRender: function () {
         'use strict';
-        this.model = RAD.model('collection.categories');
-        this.isFirstClickOnForm = true;
+        this.$successMessage = this.$('#success-message');
     },
+
 
     onSubmit: function (e) {
         'use strict';
@@ -24,10 +29,9 @@ RAD.view('add_costs.screen', RAD.Blanks.ScrollableView.extend({
             field3 = this.el.querySelector('#costs-type'),
             costsType = field3.value;
         if ((time) && (costsType) && (this.isRightSum(sum))) {
-            RAD.model('model.purchase').set({date: time, category: costsType, sum: sum});
-            RAD.model('collection.purchases').add(RAD.model('model.purchase'));
-           // console.log(RAD.model('collection.purchases'));
-            $('#success-message').show();
+            //RAD.model('model.purchase').set({date: time, category: costsType, sum: sum});
+            RAD.model('collection.purchases').add({date: time, category: costsType, sum: sum});
+            this.$successMessage.show();
             this.isFirstClickOnForm = false;
         }
     },

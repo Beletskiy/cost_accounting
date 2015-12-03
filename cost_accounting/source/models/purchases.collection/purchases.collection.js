@@ -4,9 +4,9 @@ RAD.model('collection.purchases', Backbone.Collection.extend({
         var purchases = JSON.parse(localStorage.getItem('purchases'));
         this.add(purchases);
         this.on('add remove', function () {
+            console.log(JSON.stringify(this));
             localStorage.setItem('purchases', JSON.stringify(this));
         });
-       // console.log('initialise collection.purchases');
     },
     comparator: function( collection ){
         'use strict';

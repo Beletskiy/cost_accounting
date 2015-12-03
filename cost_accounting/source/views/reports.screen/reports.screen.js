@@ -40,7 +40,15 @@ RAD.view('reports.screen', RAD.Blanks.View.extend({
         'use strict';
         var self = this,
             VERTICAL_INDENT = 40,
-            habitation = 0, transport = 0, entertainment = 0, products = 0, food = 0, comServ = 0,
+            costsType = {
+                habitation: 0,
+                transport: 0,
+                entertainment: 0,
+                products: 0,
+                food: 0,
+                comServ: 0
+            },
+            sumOfCost = 0,
             currentInnerHeight = 0, currentInnerWeight = 0;
         calculateCurrentInnerSizes();
         google.load('visualization', '1.1',
@@ -48,7 +56,7 @@ RAD.view('reports.screen', RAD.Blanks.View.extend({
 
         function drawChart() {
             var data = new google.visualization.DataTable(),
-                year = 0, month = 0, day = 0, currentDate = null, row = null, common = 0, lastDate = null,
+                year = 0, month = 0, day = 0, currentDate = null, row = null, commonOnDay = 0, lastDate = null,
                 currentDateArr = [];
 
             data.addColumn('date', 'Day');
@@ -61,26 +69,24 @@ RAD.view('reports.screen', RAD.Blanks.View.extend({
             data.addColumn('number', 'Common');
 
             for (var i = 0; i < self.model.length; i++) {
-                habitation = 0;
-                transport = 0;
-                entertainment = 0;
-                products = 0;
-                food = 0;
-                comServ = 0;
+
+                zeroingCostsType();
                 currentDate = self.model.models[i].attributes.date;
                 currentDateArr = currentDate.split('-');
                 year = Number(currentDateArr[0]);
                 month = Number(currentDateArr[1]);
                 day = Number(currentDateArr[2]);
-                calculateSumForCategories(self.model.models[i].attributes.category, i);
+                calculateSumForCategory(self.model.models[i].attributes.category, i);
+                calculateSumForAllCategories();
                 if (lastDate !== currentDate) {
                     lastDate = currentDate;
-                    common = habitation + transport + entertainment + products + food + comServ; //объединить в объект?
+                    commonOnDay = sumOfCost;
                 } else {
-                    common += habitation + transport + entertainment + products + food + comServ;
+                    commonOnDay += sumOfCost;
                 }
                 row = [[new Date(year, month - 1, day),
-                    habitation, transport, entertainment, products, food, comServ, common]];
+                    costsType.habitation, costsType.transport, costsType.entertainment, costsType.products,
+                    costsType.food, costsType.comServ, commonOnDay]];
 
                 data.addRows(row);
             }
@@ -103,31 +109,48 @@ RAD.view('reports.screen', RAD.Blanks.View.extend({
             chart.draw(data, google.charts.Line.convertOptions(options));
         }
 
-        function calculateSumForCategories(category, index) {
+        function calculateSumForCategory(category, index) {
             var sum = Number(self.model.models[index].attributes.sum);
             switch (category) {
                 case 'Habitation':
-                    habitation = sum;
+                    costsType.habitation = sum;
                     break;
                 case 'Transport':
-                    transport = sum;
+                    costsType.transport = sum;
                     break;
                 case 'Entertainment':
-                    entertainment = sum;
+                    costsType.entertainment = sum;
                     break;
                 case 'Products':
-                    products = sum;
+                    costsType.products = sum;
                     break;
                 case 'Food':
-                    food = sum;
+                    costsType.food = sum;
                     break;
                 case 'Communication services':
-                    comServ = sum;
+                    costsType.comServ = sum;
                     break;
                 default:
                     console.log('Do not have this category');
             }
 
+        }
+
+        function zeroingCostsType() {
+            for (var prop in costsType) {
+                if (costsType.hasOwnProperty(prop)) {
+                    costsType[prop] = 0;
+                }
+            }
+        }
+
+        function calculateSumForAllCategories() {
+            sumOfCost = 0;
+            for (var prop in costsType) {
+                if (costsType.hasOwnProperty(prop)) {
+                    sumOfCost += costsType[prop];
+                }
+            }
         }
 
         function calculateCurrentInnerSizes() {

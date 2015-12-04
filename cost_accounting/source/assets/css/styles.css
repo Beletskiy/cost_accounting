@@ -50,17 +50,14 @@ form {
     color: #ddd;
 }
 
-::-webkit-inner-spin-button {
-    display: none;
+#date-choose::-webkit-inner-spin-button {
+    margin-top: 10px;
+    margin-right: 10px;
 }
 
 ::-webkit-calendar-picker-indicator {
     background: #ED9170;
     color: black;
-}
-
-::-webkit-validation-bubble-message {
-    background: red;
 }
 
 .form-group {

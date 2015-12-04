@@ -2,7 +2,7 @@
     <div class="wrapper">
         <h1><span class="glyphicon glyphicon-menu-left pull-left"></span>Add Costs</h1>
 
-        <form id = "form-add-cost" >
+        <form id="form-add-cost" action="#">
             <div class="form-group">
                 <input type="date" class="form-control" id="date-choose" min="2015-01-01" max="2025-01-01" required>
             </div>
@@ -15,10 +15,10 @@
                 </select>
             </div>
             <div class="form-group">
-                <input type="number" class="form-control" id="sum" placeholder="Sum" min="1" max ="999999" required>
+                <input type="number" class="form-control" id="sum" placeholder="Sum" min="1" max="999999" required>
             </div>
             <button class="btn btn-default" id="add-cost">Add cost</button>
         </form>
-        <p id = "success-message">Your cost had been added to history!</p>
+        <p id="success-message">Your cost had been added to history!</p>
     </div>
 </div>

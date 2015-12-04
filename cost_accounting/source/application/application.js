@@ -46,7 +46,7 @@ RAD.application(function (core) {
     app.showAddCosts = function () {
         var options = {
             container_id: '#screen',
-            content: 'add_costs.screen',
+            content: 'add_costs.screen'
         };
         core.publish('navigation.show', options);
     };
@@ -61,7 +61,7 @@ RAD.application(function (core) {
     app.showReports = function () {
         var options = {
             container_id: '#screen',
-            content: 'reports.screen',
+            content: 'reports.screen'
         };
         core.publish('navigation.show', options);
     };

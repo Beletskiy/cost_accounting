@@ -8,8 +8,6 @@
 
         'source/models/purchases.collection/purchases.collection.js',
 
-        'source/models/purchase.model/purchase.model.js',
-
         'source/service/service.json_loader/service.json_loader.js',
 
         'source/views/add_costs.screen/add_costs.screen.js',

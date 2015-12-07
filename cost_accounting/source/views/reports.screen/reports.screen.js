@@ -3,7 +3,7 @@ RAD.view('reports.screen', RAD.Blanks.View.extend({
     url: 'source/views/reports.screen/reports.screen.html',
 
     events: {
-        'tap .glyphicon-menu-left': 'backToThePreviousPage'
+        'tap #back-button': 'backToThePreviousPage'
     },
 
     onInitialize: function () {

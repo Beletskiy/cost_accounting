@@ -3,8 +3,8 @@ RAD.view('history.screen', RAD.Blanks.ScrollableView.extend({
     url: 'source/views/history.screen/history.screen.html',
 
     events: {
-        'tap .glyphicon-remove-circle': 'deletePurchase',
-        'tap .glyphicon-menu-left': 'backToThePreviousPage'
+        'tap .remove-button': 'deletePurchase',
+        'tap #back-button': 'backToThePreviousPage'
     },
 
 
@@ -45,7 +45,6 @@ RAD.view('history.screen', RAD.Blanks.ScrollableView.extend({
         'use strict';
         var purchaseForRemove = e.currentTarget.id;
         RAD.model('collection.purchases').remove(RAD.model('collection.purchases').models[purchaseForRemove]);
-
     },
 
     backToThePreviousPage: function () {

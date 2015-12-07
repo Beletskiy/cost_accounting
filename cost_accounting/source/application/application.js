@@ -6,7 +6,6 @@ RAD.application(function (core) {
 
         core.startService();
         app.loadHome();
-        app.loadCategories();
     };
 
     app.loadHome = function () {
@@ -30,19 +29,6 @@ RAD.application(function (core) {
         });
     };
 
-    app.showNextPage = function (id) {
-        switch (id) {
-            case 'add-costs':
-                app.showAddCosts();
-                break;
-            case 'history':
-                app.showHistory();
-                break;
-            case 'reports':
-                app.showReports();
-                break;
-        }
-    };
     app.showAddCosts = function () {
         var options = {
             container_id: '#screen',

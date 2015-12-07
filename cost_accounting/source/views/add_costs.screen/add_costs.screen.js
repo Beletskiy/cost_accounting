@@ -3,19 +3,24 @@ RAD.view('add_costs.screen', RAD.Blanks.ScrollableView.extend({
     url: 'source/views/add_costs.screen/add_costs.screen.html',
 
     events: {
-        'tap button': 'onSubmit',
-        'tap .glyphicon-menu-left': 'backToThePreviousPage',
-        'tap input, select, .glyphicon-menu-left': 'clearForm'
+        'tap #add-cost': 'onSubmit',
+        'tap #back-button': 'backToThePreviousPage',
+        'tap input, select, #back-button': 'hideSuccessMessage'
     },
 
     model: RAD.model('collection.categories'),
-    isFirstClickOnForm: true,
+    //isFirstClickOnForm: true,
 
     $successMessage: null,
     $formAddCost: null,
     $dateChoose: null,
     $sum: null,
     $costsType: null,
+
+    onInitialize: function () {
+        'use strict';
+        this.application.loadCategories();
+    },
 
     onEndRender: function () {
         'use strict';
@@ -34,10 +39,11 @@ RAD.view('add_costs.screen', RAD.Blanks.ScrollableView.extend({
             sum = this.$sum.val(),
             costsType = this.$costsType.val();
 
-        if ((this.isRightTime(time)) && (costsType) && (this.isRightSum(sum))) {
+        if ((this.$formAddCost[0].checkValidity()) && this.isFirstClickOnForm) {
             RAD.model('collection.purchases').add({date: time, category: costsType, sum: sum});
             this.$successMessage.show();
             this.isFirstClickOnForm = false;
+            this.clearForm();
         }
     },
 
@@ -50,12 +56,16 @@ RAD.view('add_costs.screen', RAD.Blanks.ScrollableView.extend({
         'use strict';
         if (!this.isFirstClickOnForm) {
             this.$formAddCost[0].reset();
-            this.$successMessage.hide();
             this.isFirstClickOnForm = true;
         }
     },
 
-    isRightSum: function (sum) {
+    hideSuccessMessage: function () {
+        'use strict';
+        this.$successMessage.hide();
+    }
+
+  /*  isRightSum: function (sum) {
         'use strict';
         var MIN_SUM = 0,
             MAX_SUM = 999999;
@@ -74,8 +84,8 @@ RAD.view('add_costs.screen', RAD.Blanks.ScrollableView.extend({
             month = Number(currentDateArr[1]),
             day = Number(currentDateArr[2]);
 
-        if ((year > MIN_YEAR) && (year < MAX_YEAR ) && (day <= MAX_DAYS_IN_MONTH) && (month < MAX_MONTHS)) {
+        if ((year > MIN_YEAR) && (year < MAX_YEAR ) && (day <= MAX_DAYS_IN_MONTH) && (month <= MAX_MONTHS)) {
             return true;
         }
-    }
+    } */
 }));

@@ -1,6 +1,6 @@
 <div>
     <div class="wrapper">
-        <h1><span class="glyphicon glyphicon-menu-left pull-left"></span>History</h1>
+        <h1><span class="glyphicon glyphicon-menu-left pull-left" id = "back-button"></span>History</h1>
         {{# _.each(model, function(item, index) { }}
         <ul>
             <li> {{ item.date }}</li>
@@ -11,7 +11,7 @@
                     <tr class="{{ item.elements[i].category }}">
                         <td> {{ item.elements[i].category }}</td>
                         <td> {{ item.elements[i].sum }} UAH</td>
-                        <td><span class="glyphicon glyphicon-remove-circle pull-right"
+                        <td><span class="glyphicon glyphicon-remove-circle pull-right remove-button"
                                   id="{{ item.elements[i].id }}"></span></td>
                     </tr>
                 </table>
